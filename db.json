@@ -370,5 +370,23 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "Rua da Jaqueira, s/n",
+      "number": "12",
+      "optionalAddress": "s/n",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 4,
+          "menuId": "cup-cake"
+        },
+        {
+          "quantity": 2,
+          "menuId": "donut"
+        }
+      ],
+      "id": 1
+    }
+  ]
 }

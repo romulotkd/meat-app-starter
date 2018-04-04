@@ -39,4 +39,5 @@ export class ShoppingCartService {
             .map(item => item.value()) //transformo minha lista de CartItem em lista de números
             .reduce((prev, value) => prev + value, 0) //itero pela lista somando os números e retornando o total
     }
+
 }

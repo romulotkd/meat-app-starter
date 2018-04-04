@@ -9,27 +9,32 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 })
 export class OrderComponent implements OnInit {
 
+  delivery: number = 8
+
   paymentOptions: RadioOption[] = [
-    {label: 'Dinheiro', value: 'MON'},
-    {label: 'Cartão de Débito  ', value: 'DEB'},
-    {label: 'Cartão Refeição', value: 'REF'}
-  ] 
+    { label: 'Dinheiro', value: 'MON' },
+    { label: 'Cartão de Débito  ', value: 'DEB' },
+    { label: 'Cartão Refeição', value: 'REF' }
+  ]
 
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
   }
 
-  cartItems(): CartItem[]{
+  itemsValue(): number {
+    return this.orderService.itemsValue()
+  }
+  cartItems(): CartItem[] {
     return this.orderService.cartItems()
   }
 
-  increaseQtd(item: CartItem){
-     this.orderService.increaseQtd(item)
+  increaseQtd(item: CartItem) {
+    this.orderService.increaseQtd(item)
   }
 
-  decreaseQtd(item: CartItem){
-     this.orderService.decreaseQtd(item)
+  decreaseQtd(item: CartItem) {
+    this.orderService.decreaseQtd(item)
   }
 
   remove(item: CartItem) {

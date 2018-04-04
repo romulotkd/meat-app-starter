@@ -35,4 +35,5 @@ export class OrderComponent implements OnInit {
   remove(item: CartItem) {
     this.orderService.remove(item)
   }
+
 }

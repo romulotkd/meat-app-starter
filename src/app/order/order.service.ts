@@ -15,7 +15,7 @@ export class OrderService {
     increaseQtd(item: CartItem){
         this.cartService.increaseQtd(item)
     }
-    
+
     decreaseQtd(item: CartItem){
         this.cartService.decreaseQtd(item)
     }
@@ -23,5 +23,5 @@ export class OrderService {
     remove(item: CartItem) {
         this.cartService.removeItem(item)
     }
-    
+
 }

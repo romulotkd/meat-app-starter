@@ -2,6 +2,7 @@ import { CartItem } from "./cart-item.model";
 import { MenuItem } from "../menu-item/menu-item.model";
 
 export class ShoppingCartService {
+
     items : CartItem[] = []
 
     clear(){
@@ -17,11 +18,11 @@ export class ShoppingCartService {
             this.items.push(new CartItem(item))
         }
     }
-    
+
     increaseQtd(item: CartItem){
         item.quantity = item.quantity + 1
     }
-    
+
     decreaseQtd(item: CartItem){
         item.quantity = item.quantity - 1
         if(item.quantity === 0){

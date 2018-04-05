@@ -5,6 +5,10 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
 
+//ReactForm
+import { FormGroup, FormBuilder}  from '@angular/forms'
+
+
 @Component({
   selector: 'mt-order',
   templateUrl: './order.component.html'
@@ -12,6 +16,7 @@ import { Router } from '@angular/router';
 export class OrderComponent implements OnInit {
 
   delivery: number = 8
+  orderForm: FormGroup
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -20,9 +25,20 @@ export class OrderComponent implements OnInit {
   ]
 
   constructor(private orderService: OrderService,
-              private router: Router) { }
+              private router: Router,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this,this.orderForm = this.formBuilder.group({
+      name:this.formBuilder.control(''),
+      email: this.formBuilder.control(''),
+      emailConfirmation: this.formBuilder.control(''),
+      address: this.formBuilder.control(''),
+      number: this.formBuilder.control(''),
+      optionalAddress: this.formBuilder.control(''),
+      paymentOption: this.formBuilder.control('')
+
+    })
   }
 
   itemsValue(): number {

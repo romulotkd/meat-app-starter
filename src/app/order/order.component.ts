@@ -6,7 +6,7 @@ import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
 
 //ReactForm
-import { FormGroup, FormBuilder}  from '@angular/forms'
+import { FormGroup, FormBuilder, Validators }  from '@angular/forms'
 
 
 @Component({
@@ -17,6 +17,8 @@ export class OrderComponent implements OnInit {
 
   delivery: number = 8
   orderForm: FormGroup
+  emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  numberPattern = /^[0-9]*$/
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -30,13 +32,13 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this,this.orderForm = this.formBuilder.group({
-      name:this.formBuilder.control(''),
-      email: this.formBuilder.control(''),
-      emailConfirmation: this.formBuilder.control(''),
-      address: this.formBuilder.control(''),
-      number: this.formBuilder.control(''),
+      name:this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+      email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      address: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+      number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: this.formBuilder.control(''),
-      paymentOption: this.formBuilder.control('')
+      paymentOption: this.formBuilder.control('', [Validators.required])
 
     })
   }

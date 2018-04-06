@@ -18,7 +18,7 @@ import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.compo
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
+//import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -38,8 +38,8 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
-    SharedModule,
-    CoreModule
+    // CoreModule, o core será chamado no SharedModule.
+    SharedModule.forRoot() //O forRoot caregará o sharedModule e os providers necessários.
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]

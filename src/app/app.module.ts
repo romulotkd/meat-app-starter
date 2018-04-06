@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -37,7 +37,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
     // CoreModule, o core será chamado no SharedModule.
     SharedModule.forRoot() //O forRoot caregará o sharedModule e os providers necessários.
   ],

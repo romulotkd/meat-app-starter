@@ -23,6 +23,8 @@ import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 //import { CoreModule } from './core/core.module';
 
+import { LocationStrategy, HashLocationStrategy } from '@angular/common'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule.forRoot(), //O forRoot caregará o sharedModule e os providers necessários.
     BrowserAnimationsModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},{ provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

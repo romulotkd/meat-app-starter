@@ -3,10 +3,14 @@ import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurants.service';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { FormBuilder, FormGroup, FormControl} from '@angular/forms'
+import { Observable } from 'rxjs/Observable'
+
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/debounceTime'
 import 'rxjs/add/operator/distinctUntilChanged'
+import 'rxjs/add/operator/catch'
+import 'rxjs/add/observable/from'
 
 @Component({
   selector: 'mt-restaurants',
@@ -49,7 +53,8 @@ export class RestaurantsComponent implements OnInit {
         .debounceTime(500)
         .distinctUntilChanged()
         .do(input => console.log(`q=${input}`))
-        .switchMap(input => this.restaurantService.restaurants(input)) //um subscribe não sobrescreve o outro
+        .switchMap(input => this.restaurantService.restaurants(input) //um subscribe não sobrescreve o outro
+            .catch(error => Observable.from([]))) //catch retorna um erro
         .subscribe(restaurants => this.restaurants = restaurants)
 
     this.restaurantService.restaurants().subscribe(restaurants => this.restaurants = restaurants);

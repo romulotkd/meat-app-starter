@@ -2,7 +2,7 @@ import * as jsonServer from 'json-server';
 import { Express } from 'express'
 import * as fs from 'fs'
 import * as https from 'https'
-import {handleAuthentication} from './auth'
+import { handleAuthentication } from './auth'
 
 var server: Express = jsonServer.create();
 
@@ -31,5 +31,4 @@ https.createServer(options, server).listen(3001, () => {
   console.log('JSON Server is running on https://localhost:3001')
 })
 
-//
 //nodemon --watch backend backend\dist\server.js

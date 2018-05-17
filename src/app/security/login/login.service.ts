@@ -13,7 +13,7 @@ export class LoginService {
     constructor(private http: HttpClient) { }
 
     login(email: string, password: string): Observable<User> {
-        return this.http.post<User>(`${MEAT_API}/login`, { email: email, password: password })
+        return this.http.post<User>(`${MEAT_API}/login`, { email: email, password: password }).do(user => this.user = user)
     }
 
     isLoggedIn(): boolean {

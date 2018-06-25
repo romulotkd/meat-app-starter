@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { ShoppingCartService } from "../restaurant-detail/shopping-cart/shopping-cart.service"
 import { CartItem } from "../restaurant-detail/shopping-cart/cart-item.model"
-import { Order, OrderItem } from "../order/order.model"
-import { HttpClient, HttpHeaders } from "@angular/common/http"
+import { Order } from "../order/order.model"
+import { HttpClient } from "@angular/common/http"
 import { Observable } from "rxjs/Observable"
 import { MEAT_API } from '../app.api'
 
